@@ -1,19 +1,31 @@
-# README
+# 🖥️ Docker & Minikube Manager Desktop App 🚀
 
-## About
+Welcome to the **Docker & Minikube Manager**, a powerful desktop application that allows you to manage Docker containers, visualize running containers, and interact with Minikube—all in one place! 🌟
 
-This is the official Wails React-TS template.
+---
 
-You can configure the project by editing `wails.json`. More information about the project settings can be found
-here: https://wails.io/docs/reference/project-config
+## 🛠️ Features
+- **Docker Management & Visualization**: View and manage your Docker containers, images, and monitor resource usage. 📊
+- **Minikube Control**: Interact with Minikube running locally, start/stop clusters, and manage resources. 🎛️
+- **Resource Monitoring**: View real-time **GPU**, **CPU**, and **RAM** usage to keep track of your system's performance. 📈
 
-## Live Development
+---
 
-To run in live development mode, run `wails dev` in the project directory. This will run a Vite development
-server that will provide very fast hot reload of your frontend changes. If you want to develop in a browser
-and have access to your Go methods, there is also a dev server that runs on http://localhost:34115. Connect
-to this in your browser, and you can call your Go code from devtools.
+## 💻 Tech Stack
 
-## Building
+Our application is built using the following tech stack:
 
-To build a redistributable, production mode package, use `wails build`.
+- **Go** for the backend 🐹
+- **Go Gin Gonic** for APIs ⚙️
+- **TypeScript** for frontend logic 🔤
+- **TailwindCSS** for styling 🌈
+- **Next.js** for the frontend framework 🌐
+- **Wails** for building cross-platform desktop apps 🖥️
+- **Shadcn** for UI components ⚙️
+
+---
+
+## 🌍 Supported Platforms
+- **Linux** 🐧
+- **Darwin** (macOS) 🍏
+- **Windows** 🪟
