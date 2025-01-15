@@ -1,0 +1,5 @@
+build/bin
+build/darwin 
+build/linux
+build/windows
+.DS_Store
