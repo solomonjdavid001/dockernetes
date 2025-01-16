@@ -9,9 +9,9 @@ import {
 import { Rotate3D } from "lucide-react";
 
 const appInfo = {
-  name: "GoDocker",
+  name: "Dockernetes",
   logo: Rotate3D,
-  plan: "Pro",
+  plan: "Free",
 };
 
 export function LogoAndNameDisplay() {

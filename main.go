@@ -59,7 +59,7 @@ func main() {
 			},
 			About: &mac.AboutInfo{
 				Title:   "Dockernetes",
-				Message: "2025",
+				Message: "© 2025",
 				Icon:    icon,
 			},
 		},
