@@ -64,3 +64,19 @@ wails dev
 ```bash
 wails build -platform darwin/arm64,linux/amd64,windows/amd64
 ```
+
+## Try it out
+
+You can download the latest version of the application from the [Releases](https://github.com/solomonjdavid001/Dockernetes/releases) page.
+
+## Contributing
+
+Contributions are welcome!
+
+If you find a bug or have a feature request, please open an issue on the [Issues](https://github.com/solomonjdavid001/Dockernetes/issues) page.
+
+If you want to contribute code, please fork the repository and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
