@@ -40,7 +40,7 @@ Our application is built using the following tech stack:
    - [Node.js](https://nodejs.org/en/download) v18+
    - [Wails](https://wails.io/docs/gettingstarted/installation/) v2.9.2+
    - [Docker](https://www.docker.com/products/docker-desktop/) v20.10.17+
-   - [Redis](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/)
+   - [Redis](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/) v7.0.5+
 
 2. Clone the repository:'
 
