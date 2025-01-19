@@ -10,7 +10,7 @@ export default function Payments() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/v1/images")
+      .get("http://localhost:8080/api/docker/v1/images")
       .then((response) => {
         console.log("API Response:", response.data); // Log the full response
         setData(response.data.images || []); // Make sure the imageList exists

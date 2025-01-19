@@ -1,0 +1,7 @@
+app:
+  name: Dockernetes-Backend
+  env: production
+  port: ":8080"
+redis:
+  server: localhost:6379
+NODE_ENV: production

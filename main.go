@@ -1,8 +1,10 @@
+// main.go
 package main
 
 import (
 	"embed"
 
+	"github.com/solomonjdavid001/Dockernetes/backend/cmd"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -15,9 +17,12 @@ var assets embed.FS
 //go:embed build/appicon.png
 var icon []byte
 
+//go:embed config.yaml
+var configFile embed.FS
+
 func main() {
-	// Create an instance of the app structure
-	app := NewApp()
+	// Pass configFile to the NewApp function
+	app := cmd.NewApp(configFile)
 
 	// Create application with options
 	err := wails.Run(&options.App{
@@ -39,8 +44,8 @@ func main() {
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
-		OnStartup:  app.startup,
-		OnShutdown: app.startup,
+		OnStartup:  app.Startup,
+		OnShutdown: app.Shutdown,
 		Bind: []interface{}{
 			app,
 		},
