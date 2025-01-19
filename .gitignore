@@ -4,3 +4,4 @@ build/linux
 build/windows
 .DS_Store
 .env
+dump.rdb
