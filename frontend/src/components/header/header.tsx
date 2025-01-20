@@ -2,7 +2,7 @@
 
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { ModeToggle } from "../mode-toggle";
+import { ThemeToggle } from "../theme-toggle";
 
 export function Header() {
   return (
@@ -11,7 +11,7 @@ export function Header() {
         <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mr-2 h-4" />
       </div>
-      <ModeToggle />
+      <ThemeToggle />
     </header>
   );
 }
