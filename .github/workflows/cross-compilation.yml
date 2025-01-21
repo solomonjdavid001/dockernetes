@@ -1,6 +1,8 @@
 name: "example"
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - cicd/git_workflows
 jobs:
   package:
     strategy:
