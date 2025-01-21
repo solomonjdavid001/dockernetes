@@ -27,13 +27,13 @@ jobs:
           wails build
       - name: upload artifacts macOS
         if: matrix.platform == 'macos-latest'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: wails-binaries-macos
           path: build/bin/*
       - name: upload artifacts windows
         if: matrix.platform == 'windows-latest'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: wails-binaries-windows
           path: build/bin/*
