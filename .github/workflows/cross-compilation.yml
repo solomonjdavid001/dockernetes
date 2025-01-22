@@ -10,9 +10,6 @@ jobs:
           - os: macos-latest
             artifact_name: Dockernetes.app
             asset_name: Dockernetes-macos-arm64.app
-          - os: windows-latest
-            artifact_name: Dockernetes-amd64.exe
-            asset_name: ${{ github.event.repository.name }}-windows-amd64.exe
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -27,7 +24,7 @@ jobs:
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
       - name: Build Wails app
         run: wails build
-      - name: Upload binaries to release
+      - name: Upload Mac binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.CICD_GITHUB_TOKEN }}
