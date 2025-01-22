@@ -1,40 +1,39 @@
-name: Wails Cross Compilation
+name: Wails build
 
 on:
   push:
-    branches:
-      - cicd/git_workflows
-
+    tags:
+      - '*'
 
 jobs:
-  release:
+  build:
     strategy:
+      fail-fast: false
       matrix:
-        include:
-          - os: ubuntu-latest
-            artifact_name: ${{ github.event.repository.name }}
-            asset_name: Dockernetes.app
-          - os: windows-latest
-            artifact_name: ${{ github.event.repository.name }}.exe
-            asset_name: Dockernetes-amd64.exe
-          - os: macos-latest
-            artifact_name: ${{ github.event.repository.name }}
-            asset_name: Dockernetes.app
-    runs-on: ${{ matrix.os }}
+        build:
+          - name: 'Dockernetes'
+            platform:  'linux/amd64'
+            os: 'ubuntu-latest'
+          - name: 'Dockernetes'
+            platform:  'windows/amd64'
+            os: 'windows-latest'
+          - name: 'Dockernetes'
+            platform:  'darwin/universal'
+            os: 'macos-latest'
+    runs-on: ${{ matrix.build.os }}
     steps:
-      - uses: actions/checkout@v3
-      - name: Install Go
-        uses: actions/setup-go@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          go-version: "1.22"
-      - uses: oven-sh/setup-bun@v2
+          submodules: recursive
+      - name: Build wails
+        uses: dAppServer/wails-build-action@v2.2
+        id: build
         with:
-          bun-version: 1.1.39
-      - name: Get Wails
-        run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
-      - name: Build Wails app
-        run: |
-          wails build
+          build-name: ${{ matrix.build.name }}
+          build-platform: ${{ matrix.build.platform }}
+          package: false
+          go-version: '1.20'
       - name: Upload builds to release
         uses: svenstaro/upload-release-action@v2
         with:
