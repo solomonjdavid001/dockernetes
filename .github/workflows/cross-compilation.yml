@@ -1,41 +1,34 @@
-name: Wails build
-
+name: Wails Cross Compilation
 on:
   push
 
 jobs:
-  build:
+  release:
     strategy:
-      fail-fast: false
       matrix:
-        build:
-          - name: 'Dockernetes'
-            platform: 'windows/amd64'
-            os: 'windows-latest'
-          - name: 'Dockernetes'
-            platform: 'darwin/universal'
-            os: 'macos-latest'
-    runs-on: ${{ matrix.build.os }}
+        include:
+          - os: macos-latest
+            artifact_name: Dockernetes.app
+            asset_name: Dockernetes-macos-arm64.app
+          - os: windows-latest
+            artifact_name: Dockernetes-amd64.exe
+            asset_name: ${{ github.event.repository.name }}-windows-amd64.exe
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install Bun
-        run: |
-          curl -fsSL https://bun.sh/install | bash
-          export PATH="$HOME/.bun/bin:$PATH"
-        shell: bash
-      - name: Build wails
-        uses: dAppServer/wails-build-action@v2.2
-        id: build
+      - uses: actions/checkout@v3
+      - name: Install Go
+        uses: actions/setup-go@v2
         with:
-          build-name: ${{ matrix.build.name }}
-          build-platform: ${{ matrix.build.platform }}
-          package: false
-          go-version: '1.22'
-      - name: Upload builds to release
+          go-version: "1.22"
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.1.39
+      - name: Build Wails app
+        run: wails build
+      - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/bin/${{ matrix.artifact_name }}
+          file: target/release/${{ matrix.artifact_name }}
           asset_name: ${{ matrix.asset_name }}
           tag: ${{ github.ref }}
