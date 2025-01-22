@@ -10,17 +10,20 @@ jobs:
       matrix:
         build:
           - name: 'Dockernetes'
-            platform:  'windows/amd64'
+            platform: 'windows/amd64'
             os: 'windows-latest'
           - name: 'Dockernetes'
-            platform:  'darwin/universal'
+            platform: 'darwin/universal'
             os: 'macos-latest'
     runs-on: ${{ matrix.build.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          submodules: recursive
+      - name: Install Bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          export PATH="$HOME/.bun/bin:$PATH"
+        shell: bash
       - name: Build wails
         uses: dAppServer/wails-build-action@v2.2
         id: build
