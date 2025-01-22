@@ -23,6 +23,8 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.1.39
+      - name: Install Wails
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
       - name: Build Wails app
         run: wails build
       - name: Upload binaries to release
